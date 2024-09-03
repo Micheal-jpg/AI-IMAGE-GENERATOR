@@ -116,11 +116,32 @@ form button:hover{
      border-radius: 5px;
      transition: transform 0.3s ease, box-shadow 0.3s ease;
      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+     opacity: 0;
+}
+
+#search-result img.loaded {
+    opacity: 1; /* Show image */
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #search-result img:hover{
     transform: scale(1.05);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .fade-in {
@@ -136,6 +157,21 @@ form button:hover{
     }
 }
 
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 #error-message {
     width: 90%;
     max-width: 600px;
@@ -146,15 +182,26 @@ form button:hover{
     text-align: center;
     opacity: 0;
     transform: translateY(-10px);
-    animation: slideIn 0.5s ease-out forwards;
+    animation: bounceIn 1.4s ease-out forwards;
 }
 
-@keyframes slideIn {
-    to {
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    60% {
         opacity: 1;
+        transform: translateY(30px);
+    }
+    80% {
+        transform: translateY(-10px);
+    }
+    100% {
         transform: translateY(0);
     }
 }
+
 
 @media (max-width: 768px) {
     h1 {
